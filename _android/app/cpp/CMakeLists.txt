@@ -4,8 +4,10 @@ if(POLICY CMP0079)
     cmake_policy(SET CMP0079 NEW)
 endif()
 
-########## PROJECT NAME ##########
-set(APP_NAME GlistApp)
+########## PROJECT NAME COMES FROM MAIN CMAKE WHICH IS UPPER FOLDER##########
+if(NOT DEFINED APP_NAME)
+    set(APP_NAME GlistApp)
+endif()
 
 ########## USED PLUGINS LIST ##########
 set(PLUGINS)
@@ -22,10 +24,8 @@ set(TOP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../..")
 set(MAIN_DIR ${TOP_DIR}/GlistEngine)
 set(ENGINE_DIR ${MAIN_DIR}/engine)
 
-# gipAndroid eklentisini ekliyoruz
 list(APPEND PLUGINS gipAndroid)
 
-# Engine CMake'ini dahil ediyoruz
 include(${ENGINE_DIR}/CMakeLists.txt)
 
 if(NOT DEFINED GLIST_APP_REL_PATH)

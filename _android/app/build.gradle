@@ -53,6 +53,8 @@ android {
         targetSdk 35
         versionCode 1
         versionName "1.0"
+        resValue "string", "app_name", rootProject.name
+        buildConfigField "String", "LIBRARY_NAME", "\"${rootProject.name}\""
 
         ndk {
             abiFilters "arm64-v8a", "x86_64"
@@ -62,9 +64,10 @@ android {
         externalNativeBuild {
             cmake {
                 cppFlags '-std=c++14'
-                arguments "-DGLIST_APP_REL_PATH=${glistAppDir.absolutePath.replace('\\', '/')}"
+                arguments "-DGLIST_APP_REL_PATH=${glistAppDir.absolutePath.replace('\\', '/')}", "-DAPP_NAME=${rootProject.name}"
             }
         }
+  
     }
 
     buildTypes {
@@ -86,6 +89,8 @@ android {
     }
     buildFeatures {
         viewBinding true
+        resValues true
+        buildConfig true
     }
 }
 
