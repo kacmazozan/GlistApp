@@ -1,8 +1,13 @@
 package dev.glist.android;
 
 import android.os.Bundle;
+import dev.glist.glistapp.BuildConfig;
 
 public class GlistAppActivity extends BaseGlistAppActivity {
+
+    static {
+        LIBRARY_NAME = BuildConfig.LIBRARY_NAME;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
