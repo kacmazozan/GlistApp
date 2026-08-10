@@ -35,6 +35,6 @@ endif()
 include_directories(${GLIST_APP_REL_PATH}/src)
 add_subdirectory(${GLIST_APP_REL_PATH} ${CMAKE_CURRENT_BINARY_DIR}/GlistApp)
 
-if(TARGET GlistApp)
-    target_link_libraries(GlistApp PRIVATE atomic)
+if(TARGET ${APP_NAME})
+    target_link_libraries(${APP_NAME} PRIVATE atomic)
 endif()
